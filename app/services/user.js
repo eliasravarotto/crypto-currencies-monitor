@@ -43,9 +43,7 @@ exports.findUserById = async id => {
 
 exports.updateUser = async (filter, newParameters) => {
   try {
-    const user = await this.findUserById(filter.id);
-    if (!user) return user;
-    return user.update({ ...newParameters });
+    return await User.update(newParameters, { where: filter });
   } catch (e) {
     logger.error(e);
     throw databaseError(DB_CONNECTION);

@@ -1,4 +1,4 @@
-'use strict';
+const { DEFAULT_CURRENCY } = require('../../app/constants/currencies');
 
 module.exports = {
   up: (queryInterface, Sequelize) =>
@@ -23,7 +23,10 @@ module.exports = {
         allowNull: false
       },
       image: Sequelize.STRING,
-      bio: Sequelize.TEXT,
+      preferred_money: {
+        type: Sequelize.STRING,
+        defaultValue: DEFAULT_CURRENCY
+      },
       reset_password_token: Sequelize.STRING,
       reset_password_sent_at: Sequelize.DATE,
       remember_created_at: Sequelize.DATE,
@@ -35,6 +38,7 @@ module.exports = {
       last_sign_in_at: Sequelize.DATE,
       current_sign_in_ip: Sequelize.STRING,
       last_sign_in_ip: Sequelize.STRING,
+      session_closed_at: Sequelize.DATE,
 
       // Timestamps
       created_at: Sequelize.DATE,

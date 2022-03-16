@@ -31,3 +31,31 @@ exports.signUpSchema = {
     // }
   }
 };
+
+exports.signInSchema = {
+  email: {
+    in: ['body'],
+    isEmail: true,
+    notEmpty: true,
+    errorMessage: EMAIL_IS_REQUIRED
+  },
+  password: {
+    in: ['body'],
+    notEmpty: true,
+    errorMessage: PASSWORD_IS_REQUIRED
+  }
+};
+
+exports.updateUserSchema = {
+  email: {
+    in: ['body'],
+    isEmail: true,
+    notEmpty: true,
+    errorMessage: EMAIL_IS_REQUIRED
+  },
+  username: {
+    in: ['body'],
+    notEmpty: true,
+    errorMessage: PASSWORD_IS_REQUIRED
+  }
+};
