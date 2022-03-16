@@ -39,8 +39,8 @@ const config = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.API_SESSION_SECRET || 'd3f4ul7_53cr37',
-      expiresIn: process.env.API_SESSION_EXPIRE_IN || '1d'
+      expiresIn: process.env.API_SESSION_EXPIRE_IN || '1d',
+      secret: process.env.API_SESSION_SECRET || 'd3f4ul7_53cr37'
     },
     headers: {
       apiDate: process.env.API_DATE || 'X-API-Date',

@@ -1,3 +1,5 @@
+const { DEFAULT_CURRENCY } = require('../constants/currencies');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
@@ -22,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       image: DataTypes.STRING,
-      bio: DataTypes.TEXT,
+      preferredMoney: {
+        type: DataTypes.STRING,
+        defaultValue: DEFAULT_CURRENCY
+      },
       resetPasswordToken: {
         type: DataTypes.STRING,
         field: 'reset_password_token'
@@ -55,6 +60,10 @@ module.exports = (sequelize, DataTypes) => {
       lastSignInIp: {
         type: DataTypes.STRING,
         field: 'last_sign_in_ip'
+      },
+      sessionClosedAt: {
+        type: DataTypes.DATE,
+        field: 'session_closed_at'
       },
       createdAt: {
         type: DataTypes.DATE,

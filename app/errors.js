@@ -14,3 +14,12 @@ exports.encryptError = message => internalError(message, exports.ENCRYPT_ERROR);
 
 exports.VALIDATE_ERROR = 'validate_error';
 exports.validateError = message => internalError(message, exports.VALIDATE_ERROR);
+
+exports.NOT_FOUND_ERROR = 'not_found_error';
+exports.notFoundError = message => internalError(message, exports.NOT_FOUND_ERROR);
+
+exports.AUTH_ERROR = 'auth_error';
+exports.authError = message => internalError(message, exports.AUTH_ERROR);
+
+exports.SESSION_EXPIRED_ERROR = 'session_expired_error';
+exports.sessionExpiredError = message => internalError(message, exports.SESSION_EXPIRED_ERROR);
