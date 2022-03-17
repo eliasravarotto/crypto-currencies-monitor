@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
 
   return Article;
 };
-
+`
 // tagging.js
 module.exports = (sequelize, DataTypes) => {
   const Tagging = sequelize.define(..., ... ,...);
