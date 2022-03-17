@@ -66,7 +66,7 @@ For more information check: https://devcenter.heroku.com/articles/getting-starte
 ## Others
 
 ### Model Relationships examples
-`
+```
 // articles.js
 module.exports = (sequelize, DataTypes) => {
   const Article = sequelize.define(..., ... ,...);
@@ -77,7 +77,7 @@ module.exports = (sequelize, DataTypes) => {
 
   return Article;
 };
-`
+
 // tagging.js
 module.exports = (sequelize, DataTypes) => {
   const Tagging = sequelize.define(..., ... ,...);
@@ -98,7 +98,7 @@ module.exports = (sequelize, DataTypes) => {
   return Tag;
 };
 
-`
+```
 
 
 
