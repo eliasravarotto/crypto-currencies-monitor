@@ -5,3 +5,4 @@ exports.INVALID_PASSWORD = 'invalid password';
 exports.TOKEN_NOT_PROVIDED = 'Token not provided';
 exports.SESSION_EXPIRED = 'Session expired';
 exports.CURRENCY_NOT_FOUND = 'invalid currency';
+exports.EXTERNAL_API_ERROR = 'Error al conectar con la api externa';

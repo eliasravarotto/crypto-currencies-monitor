@@ -7,15 +7,9 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true
       },
-      username: {
+      coinExternalId: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
-      },
-      email: {
-        type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
+        field: 'coin_external_id'
       },
       createdAt: {
         type: DataTypes.DATE,
