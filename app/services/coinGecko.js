@@ -1,8 +1,8 @@
 const axios = require('axios');
-const { baseUrl, marketsUrl } = require('../../config').common.coinApi;
 const logger = require('../logger');
-const { externalApiError } = require('../errors');
-const { EXTERNAL_API_ERROR } = require('../constants/errorMessages');
+const { externalApiError, notFoundError } = require('../errors');
+const { baseUrl, marketsUrl } = require('../../config').common.coinApi;
+const { EXTERNAL_API_ERROR, COIN_NOT_FOUND } = require('../constants/errorMessages');
 
 exports.getCoinById = async (coinId, userPreferredMoney) => {
   try {
@@ -15,6 +15,8 @@ exports.getCoinById = async (coinId, userPreferredMoney) => {
     return data;
   } catch (error) {
     logger.error(error);
+    if (error.message.includes('404')) throw notFoundError(COIN_NOT_FOUND);
+
     throw externalApiError(EXTERNAL_API_ERROR);
   }
 };

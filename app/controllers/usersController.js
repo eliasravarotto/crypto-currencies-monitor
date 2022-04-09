@@ -41,6 +41,7 @@ exports.signIn = async (req, res, next) => {
       id: userFound.id,
       username: userFound.username,
       email: userFound.email,
+      preferredMoney: userFound.preferredMoney,
       currentSignInAt: Date.now()
     });
     const response = userSerializer(userFound, token);

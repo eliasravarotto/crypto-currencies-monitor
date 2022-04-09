@@ -6,3 +6,5 @@ exports.TOKEN_NOT_PROVIDED = 'Token not provided';
 exports.SESSION_EXPIRED = 'Session expired';
 exports.CURRENCY_NOT_FOUND = 'invalid currency';
 exports.EXTERNAL_API_ERROR = 'Error al conectar con la api externa';
+exports.COIN_NOT_FOUND = 'Coin not found';
+exports.COIN_DUPLICATED = 'You allready have this coin';
