@@ -8,9 +8,24 @@ const {
   GET_COINS_MARKETS_PARAMS,
   GET_COINS_MARKETS_PATH,
   GET_COIN_BY_ID_PARAMS,
-  GET_COIN_BY_ID_PATH
+  GET_COIN_BY_ID_PATH,
+  CURRENCY_REPLACEMENT,
+  COIN_ID_REPLACEMENT
 } = require('../constants/coingeckoServiceConstants');
-const { createHashMapGetCoinsMarkets, createHashMapGetCoinById } = require('./coinGeckoIntegration');
+
+const createHashMapGetCoinsMarkets = currency => {
+  const hashmap = new Map();
+  hashmap.set(CURRENCY_REPLACEMENT, currency);
+
+  return hashmap;
+};
+
+const createHashMapGetCoinById = coinId => {
+  const hashmap = new Map();
+  hashmap.set(COIN_ID_REPLACEMENT, coinId);
+
+  return hashmap;
+};
 
 exports.getCoinById = async coinId => {
   try {
