@@ -12,7 +12,7 @@ module.exports = {
   testing: {
     username: config.username,
     password: config.password,
-    database: config.name,
+    database: config.dbname,
     host: config.host,
     port: config.port,
     dialect: 'postgres',
@@ -21,7 +21,7 @@ module.exports = {
   production: {
     username: config.username,
     password: config.password,
-    database: config.name,
+    database: config.dbname,
     host: config.host,
     port: config.port,
     dialect: 'postgres',
