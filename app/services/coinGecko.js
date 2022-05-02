@@ -1,17 +1,38 @@
 const axios = require('axios');
 const logger = require('../logger');
 const { externalApiError, notFoundError } = require('../errors');
-const { baseUrl, marketsUrl } = require('../../config').common.coinApi;
+const { HOST } = require('../../config').common.coinApi;
 const { EXTERNAL_API_ERROR, COIN_NOT_FOUND } = require('../constants/errorMessages');
+const { createParametersForEndpoint } = require('../helpers/Utils');
+const {
+  GET_COINS_MARKETS_PARAMS,
+  GET_COINS_MARKETS_PATH,
+  GET_COIN_BY_ID_PARAMS,
+  GET_COIN_BY_ID_PATH,
+  CURRENCY_REPLACEMENT,
+  COIN_ID_REPLACEMENT
+} = require('../constants/coingeckoServiceConstants');
 
-exports.getCoinById = async (coinId, userPreferredMoney) => {
+const createHashMapGetCoinsMarkets = currency => {
+  const hashmap = new Map();
+  hashmap.set(CURRENCY_REPLACEMENT, currency);
+
+  return hashmap;
+};
+
+const createHashMapGetCoinById = coinId => {
+  const hashmap = new Map();
+  hashmap.set(COIN_ID_REPLACEMENT, coinId);
+
+  return hashmap;
+};
+
+exports.getCoinById = async coinId => {
   try {
-    const url = `${baseUrl}/coins/${coinId}`;
-    const { data } = await axios.get(url, {
-      params: {
-        vs_currency: userPreferredMoney
-      }
-    });
+    const hashmap = createHashMapGetCoinById(coinId);
+    const params = createParametersForEndpoint(hashmap, GET_COIN_BY_ID_PARAMS);
+
+    const { data } = await axios.get(HOST + GET_COIN_BY_ID_PATH + params);
     return data;
   } catch (error) {
     logger.error(error);
@@ -23,11 +44,11 @@ exports.getCoinById = async (coinId, userPreferredMoney) => {
 
 exports.getAllCoins = async userPreferredMoney => {
   try {
-    const { data } = await axios.get(marketsUrl, {
-      params: {
-        vs_currency: userPreferredMoney
-      }
-    });
+    const hasMap = createHashMapGetCoinsMarkets(userPreferredMoney);
+    const params = createParametersForEndpoint(hasMap, GET_COINS_MARKETS_PARAMS);
+
+    const { data } = await axios.get(HOST + GET_COINS_MARKETS_PATH + params);
+
     return data;
   } catch (error) {
     logger.error(error);
