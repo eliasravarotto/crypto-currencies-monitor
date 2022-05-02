@@ -23,3 +23,6 @@ exports.authError = message => internalError(message, exports.AUTH_ERROR);
 
 exports.SESSION_EXPIRED_ERROR = 'session_expired_error';
 exports.sessionExpiredError = message => internalError(message, exports.SESSION_EXPIRED_ERROR);
+
+exports.EXTERNAL_API_ERROR = 'external_api_error';
+exports.externalApiError = message => internalError(message, exports.EXTERNAL_API_ERROR);
