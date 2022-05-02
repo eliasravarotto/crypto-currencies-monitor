@@ -1,8 +1,9 @@
 const { healthCheck } = require('./controllers/healthCheck');
 const validateSchema = require('./middlewares/schemaValidator');
-const { verifyCurrency } = require('./middlewares/currency');
+const { verifyCurrency, verifyIfCoinExist, verifyDuplicated } = require('./middlewares/currency');
 const { verifyToken } = require('./middlewares/auth');
 const { signUpSchema, signInSchema, updateUserSchema } = require('./schemas/userSchema');
+const { addCoinSchema } = require('./schemas/coinSchema');
 const {
   signUp,
   signIn,
@@ -11,6 +12,7 @@ const {
   setCurrency,
   updateUser
 } = require('./controllers/usersController');
+const { addCoin, getUserTop } = require('./controllers/coinsController');
 
 exports.init = app => {
   app.get('/health', healthCheck);
@@ -21,4 +23,10 @@ exports.init = app => {
   app.post('/users/invalidate_sessions', [verifyToken], signOut);
   app.post('/users/:preferredMoney/currency', [verifyToken, verifyCurrency], setCurrency);
   // app.put('/endpoint/put/path', [], controller.methodPUT);
+  app.post(
+    '/coins',
+    [verifyToken, validateSchema(addCoinSchema), verifyIfCoinExist, verifyDuplicated],
+    addCoin
+  );
+  app.get('/top-user-coins', [verifyToken], getUserTop);
 };

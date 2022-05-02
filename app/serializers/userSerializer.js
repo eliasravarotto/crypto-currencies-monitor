@@ -1,4 +1,4 @@
-const properties = ['id', 'email', 'username', 'image', 'token'];
+const properties = ['id', 'email', 'username', 'image', 'preferredMoney', 'token'];
 
 exports.userSerializer = (user, token) => {
   const response = properties.reduce((target, key) => {

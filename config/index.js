@@ -49,6 +49,9 @@ const config = {
     },
     encrypt: {
       saltRounds: process.env.SALT_ROUNDS || 10
+    },
+    coinApi: {
+      HOST: process.env.EXTERNAL_API
     }
   }
 };
