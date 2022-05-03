@@ -29,6 +29,7 @@ exports.signUp = async (req, res, next) => {
 
 exports.signIn = async (req, res, next) => {
   try {
+    console.log('Test actions on pr');
     console.log(req.body);
     const { email, password } = req.body;
     const userFound = await findUser({ email });
