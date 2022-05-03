@@ -1,12 +1,12 @@
 const logger = require('../logger');
 const { encrypt, compare } = require('../helpers/encrypter');
-const { createUser, findUser, updateUser, findUserById } = require('../services/user');
+const { createUser, updateUser, findUserById, findUser } = require('../services/user');
 const { generateToken } = require('../helpers/tokenizer');
 const { userSerializer } = require('../serializers/userSerializer');
 const { signUpMapper } = require('../mappers/userMapper');
-const { notFoundError, authError } = require('../errors');
+const { authError } = require('../errors');
 const { SUCCESS_SIGNOUT } = require('../constants/successMessages');
-const { EMAIL_NOT_FOUND, INVALID_PASSWORD } = require('../constants/errorMessages');
+const { BAD_CREDENTIALS } = require('../constants/errorMessages');
 
 exports.signUp = async (req, res, next) => {
   try {
@@ -32,10 +32,10 @@ exports.signIn = async (req, res, next) => {
     console.log(req.body);
     const { email, password } = req.body;
     const userFound = await findUser({ email });
-    if (!userFound) throw notFoundError({ email: [EMAIL_NOT_FOUND] });
+    if (!userFound) throw authError(BAD_CREDENTIALS);
 
     if (!(await compare(password, userFound.password))) {
-      throw authError({ password: [INVALID_PASSWORD] });
+      throw authError(BAD_CREDENTIALS);
     }
 
     const token = generateToken({
