@@ -39,12 +39,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: migrate database
+      - name: Migrate database
         run: npm run migrations
         env:
           DBURL: "postgres://postgres:postgres@localhost:5432/postgres"
 
-      - name: Run the mock tests function
-        run: node getuser.js
+      - name: Run the all tests
+        run: npm run test
         env:
           DBURL: postgres://postgres:postgres@localhost:5432/postgres
