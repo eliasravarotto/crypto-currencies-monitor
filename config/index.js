@@ -28,9 +28,9 @@ const config = {
     database: {
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      dbname: process.env.DB_NAME
+      username: process.env.DB_USERNAME || 'postgres',
+      password: process.env.DB_PASSWORD || 'postgres',
+      dbname: process.env.DB_NAME || 'postgres'
     },
     api: {
       bodySizeLimit: process.env.API_BODY_SIZE_LIMIT,
