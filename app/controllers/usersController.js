@@ -29,8 +29,6 @@ exports.signUp = async (req, res, next) => {
 
 exports.signIn = async (req, res, next) => {
   try {
-    console.log('PROBANDO CI');
-    console.log(req.body);
     const { email, password } = req.body;
     const userFound = await findUser({ email });
     if (!userFound) throw authError(BAD_CREDENTIALS);

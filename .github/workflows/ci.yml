@@ -1,4 +1,4 @@
-name: PostgreSQL service example
+name: Unit Testing with PostgreSQL
 on:
   pull_request:
     branches:
