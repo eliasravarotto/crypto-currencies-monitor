@@ -40,7 +40,7 @@ jobs:
         run: npm install
 
       - name: migrate database
-        run: node migrate.js
+        run: npm run migrations
         env:
           DBURL: "postgres://postgres:postgres@localhost:5432/postgres"
 
