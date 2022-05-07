@@ -11,6 +11,7 @@ beforeEach(() => usersFactory.create(credentials));
 
 describe('USERS >>> POST /users/login', () => {
   test('Should return user information', async () => {
+    console.log('Holoa');
     const response = await request.post('/users/login').send(credentials);
 
     expect(response.statusCode).toBe(200);

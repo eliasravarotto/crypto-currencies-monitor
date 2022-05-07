@@ -3,7 +3,7 @@ exports.config = {
   isDevelopment: true,
   common: {
     database: {
-      dbname: process.env.DB_NAME_DEV
+      dbname: process.env.DB_NAME_DEV || 'postgres'
     }
   }
 };
