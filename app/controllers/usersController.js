@@ -29,6 +29,7 @@ exports.signUp = async (req, res, next) => {
 
 exports.signIn = async (req, res, next) => {
   try {
+    console.log(`Sign IN${req.body.email}`);
     const { email, password } = req.body;
     const userFound = await findUser({ email });
     if (!userFound) throw authError(BAD_CREDENTIALS);
